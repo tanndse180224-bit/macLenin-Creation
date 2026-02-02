@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 Bánh Xe Lịch Sử - Game Triết Học Mác-Lênin</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles"></div>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader-content">
+            <div class="loader-wheel">
+                <div class="gear gear-1"><i class="fas fa-cog"></i></div>
+                <div class="gear gear-2"><i class="fas fa-cog"></i></div>
+                <div class="gear gear-3"><i class="fas fa-cog"></i></div>
+            </div>
+            <h2>ĐANG TẢI...</h2>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <p class="loader-quote">"Lịch sử tất cả các xã hội từ trước đến nay chỉ là lịch sử đấu tranh giai cấp"</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Audio Controls -->
+        <div class="audio-controls">
+            <button id="music-toggle" class="audio-btn" onclick="toggleMusic()">
+                <i class="fas fa-volume-up"></i>
+            </button>
+        </div>
+
+        <!-- Màn hình chào mừng -->
+        <div id="welcome-screen" class="screen active">
+            <div class="hero">
+                <div class="floating-icons">
+                    <i class="fas fa-landmark float-icon"></i>
+                    <i class="fas fa-balance-scale float-icon"></i>
+                    <i class="fas fa-users float-icon"></i>
+                    <i class="fas fa-industry float-icon"></i>
+                    <i class="fas fa-book float-icon"></i>
+                </div>
+                
+                <div class="hero-badge">
+                    <span>TRIẾT HỌC MÁC - LÊNIN</span>
+                </div>
+                
+                <div class="wheel-animation">
+                    <div class="wheel-outer">
+                        <div class="wheel">
+                            <div class="spoke"></div>
+                            <div class="spoke"></div>
+                            <div class="spoke"></div>
+                            <div class="spoke"></div>
+                            <div class="wheel-center">
+                                <i class="fas fa-globe-asia"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="orbit">
+                        <div class="planet"><i class="fas fa-hammer"></i></div>
+                    </div>
+                </div>
+                
+                <h1 class="glitch" data-text="BÁNH XE LỊCH SỬ">BÁNH XE LỊCH SỬ</h1>
+                <p class="subtitle typewriter">Khám phá bí mật vận động của xã hội loài người</p>
+                
+                <div class="question-box glass-card">
+                    <div class="question-icon">
+                        <i class="fas fa-question-circle pulse"></i>
+                    </div>
+                    <div class="question-content">
+                        <p class="quote"><em>"Có người cho rằng xã hội càng phát triển thì càng ổn định, nhưng thực tế cho thấy luôn có biến động, thay đổi và khủng hoảng..."</em></p>
+                        <div class="divider"></div>
+                        <p class="main-question"><strong>Vậy tại sao xã hội loài người không đứng yên mà luôn vận động?</strong></p>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item glass-card">
+                        <i class="fas fa-book-open"></i>
+                        <span>6 Bài học</span>
+                    </div>
+                    <div class="feature-item glass-card">
+                        <i class="fas fa-brain"></i>
+                        <span>10 Câu hỏi</span>
+                    </div>
+                    <div class="feature-item glass-card">
+                        <i class="fas fa-trophy"></i>
+                        <span>Thành tích</span>
+                    </div>
+                    <div class="feature-item glass-card">
+                        <i class="fas fa-certificate"></i>
+                        <span>Chứng chỉ</span>
+                    </div>
+                </div>
+                
+                <button class="btn-primary glow-btn" onclick="startGame()">
+                    <span class="btn-content">
+                        <i class="fas fa-rocket"></i>
+                        BẮT ĐẦU HÀNH TRÌNH
+                    </span>
+                    <span class="btn-bg"></span>
+                </button>
+                
+                <div class="scroll-indicator">
+                    <i class="fas fa-chevron-down bounce"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Màn hình học lý thuyết -->
+        <div id="theory-screen" class="screen">
+            <div class="theory-header">
+                <div class="chapter-info">
+                    <span class="chapter-label">CHƯƠNG</span>
+                    <span class="chapter-number" id="chapter-num">1</span>
+                    <span class="chapter-total">/ 6</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                        <div class="progress-glow"></div>
+                    </div>
+                    <div class="progress-steps" id="progress-steps"></div>
+                </div>
+            </div>
+            
+            <div class="theory-content glass-card" id="theory-content"></div>
+            
+            <div class="nav-buttons">
+                <button class="btn-nav btn-prev" id="prev-btn" onclick="prevTheory()">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Quay lại</span>
+                </button>
+                <button class="btn-nav btn-next" id="next-btn" onclick="nextTheory()">
+                    <span>Tiếp theo</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Màn hình Quiz -->
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header glass-card">
+                <div class="quiz-title">
+                    <i class="fas fa-brain"></i>
+                    <h2>THÁCH THỨC TRÍ TUỆ</h2>
+                </div>
+                <div class="quiz-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span>Điểm: <strong id="score">0</strong></span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-question"></i>
+                        <span>Câu: <strong id="question-num">1</strong>/10</span>
+                    </div>
+                    <div class="stat-item timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="timer">30</span>
+                    </div>
+                </div>
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="quiz-progress"></div>
+                </div>
+            </div>
+            
+            <div class="quiz-content glass-card" id="quiz-content"></div>
+            
+            <div class="streak-display" id="streak-display">
+                <i class="fas fa-fire"></i>
+                <span>Chuỗi đúng: <strong id="streak">0</strong></span>
+            </div>
+        </div>
+
+        <!-- Màn hình kết quả -->
+        <div id="result-screen" class="screen">
+            <div class="result-content">
+                <div class="confetti-container" id="confetti"></div>
+                
+                <div class="result-card glass-card">
+                    <div class="result-badge-container">
+                        <div class="result-badge" id="result-badge"></div>
+                        <div class="badge-glow"></div>
+                    </div>
+                    
+                    <h2 id="result-title" class="result-title"></h2>
+                    
+                    <div class="result-score-container">
+                        <div class="score-circle">
+                            <svg viewBox="0 0 100 100">
+                                <circle class="score-bg" cx="50" cy="50" r="45"/>
+                                <circle class="score-fill" id="score-circle" cx="50" cy="50" r="45"/>
+                            </svg>
+                            <div class="score-text">
+                                <span id="result-score-num">0</span>
+                                <span class="score-label">điểm</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-stats">
+                        <div class="result-stat">
+                            <i class="fas fa-check-circle"></i>
+                            <span id="correct-count">0</span>
+                            <label>Đúng</label>
+                        </div>
+                        <div class="result-stat">
+                            <i class="fas fa-times-circle"></i>
+                            <span id="wrong-count">0</span>
+                            <label>Sai</label>
+                        </div>
+                        <div class="result-stat">
+                            <i class="fas fa-fire"></i>
+                            <span id="max-streak">0</span>
+                            <label>Chuỗi max</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="conclusion-box glass-card" id="conclusion"></div>
+                
+                <div class="action-buttons">
+                    <button class="btn-action btn-restart" onclick="restartGame()">
+                        <i class="fas fa-redo"></i>
+                        Chơi lại
+                    </button>
+                    <button class="btn-action btn-summary" onclick="showSummary()">
+                        <i class="fas fa-book"></i>
+                        Tổng kết
+                    </button>
+                    <button class="btn-action btn-share" onclick="shareResult()">
+                        <i class="fas fa-share-alt"></i>
+                        Chia sẻ
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Màn hình tổng kết -->
+        <div id="summary-screen" class="screen">
+            <div class="summary-header">
+                <h2><i class="fas fa-graduation-cap"></i> TỔNG KẾT KIẾN THỨC</h2>
+                <p>Những điểm quan trọng cần ghi nhớ</p>
+            </div>
+            
+            <div class="summary-timeline" id="summary-sections"></div>
+            
+            <div class="summary-footer">
+                <button class="btn-primary glow-btn" onclick="restartGame()">
+                    <span class="btn-content">
+                        <i class="fas fa-home"></i>
+                        VỀ TRANG CHỦ
+                    </span>
+                    <span class="btn-bg"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="game.js"></script>
+</body>
+</html>
